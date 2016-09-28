@@ -1,6 +1,7 @@
 <ol>
-	<li ng-repeat="item in ctrl.found">
+	<li ng-repeat="item in ctrl.items">
 		Name: {{ item.name }}, Short name: {{ item.short_name }}, Description: {{ item.description }}
 		<button ng-click="ctrl.onRemove({index: $index});">Don't want this one!</button>
 	</li>
 </ol>
+<div class="error" ng-show="ctrl.items != undefined && ctrl.items.length===0">"Nothing found"</div>

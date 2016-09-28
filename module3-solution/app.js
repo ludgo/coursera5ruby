@@ -30,12 +30,16 @@ function NarrowItDownController(MenuSearchService) {
 
 	ctrl.getMatchedMenuItems = function(searchTerm) {
 		MenuSearchService.getMatchedMenuItems(searchTerm).then(function (result) {
-			ctrl.found = result;
-			console.log(ctrl.found);
+
+			if (searchTerm===undefined || searchTerm=="") {
+				ctrl.found = [];
+			} else {
+				ctrl.found = result;
+			}
 		});
 	};
 
-	ctrl.onRemove = function(index) {
+	ctrl.removeItem = function(index) {
 		ctrl.found.splice(index, 1);
 	};
 
@@ -63,7 +67,6 @@ function MenuSearchService($http) {
 		    	}
 		    }
 
-		    console.log(foundItems);
 
 		    // return processed items
 		    return foundItems;
